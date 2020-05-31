@@ -16,6 +16,7 @@ for (const file of commandFiles) {
 // this event will only trigger one time after logging in
 client.once('ready', () => {
   console.log('Ready!');
+  client.user.setPresence({ game: {name: 'Dev testing'}, status: 'dnd'});
 });
 
 client.on('message', async message => {
@@ -42,6 +43,14 @@ client.on('message', async message => {
       message.reply('there was an error trying to execute that command!');
     }
     //client.commands.get(command).execute(message, args, Discord);
+}else if (command === `colorhelp`) {
+  try {
+    client.commands.get('colorHelp').execute(message, args, Discord);
+  } catch (error) {
+    console.error(error);
+    message.reply('there was an error trying to execute that command!');
+  }
+  //client.commands.get(command).execute(message, args, Discord);
 }
 
 
