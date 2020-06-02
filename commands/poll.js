@@ -87,7 +87,7 @@ module.exports = {
                     Question = Question.replace(prop, "");
                 }
                 // or if (Object.prototype.hasOwnProperty.call(obj,prop)) for safety...
-                console.log(prop);
+                //console.log(prop);
             }
         }
 
