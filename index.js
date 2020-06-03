@@ -14,7 +14,7 @@ for (const file of commandFiles) {
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
-client.on('ready', () => {
+client.once('ready', () => {
   console.log('Ready!');
   client.user.setPresence({ game: {name: '/poll'}, status: 'online'});
 });
