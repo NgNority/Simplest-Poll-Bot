@@ -3,7 +3,6 @@ module.exports ={
     description: 'poll!',
     async execute(message, args, Discord) {
         //const colorPicker = require('./colorPicked.js');
-        //var async = require('./node_modules/asyncawait/async');
 
         var colorBlue = "#0000FF";
         var colorLightBlue = "#0099ff";
@@ -49,8 +48,7 @@ module.exports ={
 
         var questionSplit = args.join(" ").match(/"(.*?)"/g);
 
-
-
+    
 
         console.log("Quest Split: " + questionSplit);
 
@@ -78,8 +76,14 @@ module.exports ={
         //     Question = Question.replace("green", "");
         //     Question = Question.replace("Green", "");
         // }
-
-
+        console.log(args);
+        if(args.includes("--") == true){
+            console.log("-- detected");
+            var tempArgs = args.indexOf("--") + 1;
+            var HexColor = args[tempArgs];
+            console.log("Hex Col: " + HexColor);
+            embedColor = HexColor;
+        }
         //New color picker code
         for (var prop in colours) {
             if (colours.hasOwnProperty(prop)) { 
@@ -91,6 +95,7 @@ module.exports ={
                 //console.log(prop);
             }
         }
+    
 
             
         //console.log("Colors: " colours);
@@ -120,8 +125,7 @@ module.exports ={
                 .setDescription(questionStr.replace(/"/g, ""))
                 .setColor(embedColor)
 
-            message.channel.send(embed).then(async function sentEmbed()
-             {
+            message.channel.send(embed).then(async sentEmbed => {
                 var ql = questionSplit.length -1;
                 if (ql <= 10) {
                     if(ql == 1){
