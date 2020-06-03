@@ -1,8 +1,9 @@
-module.exports = {
+module.exports ={
     name: 'poll',
     description: 'poll!',
-    execute(message, args, Discord) {
+    async execute(message, args, Discord) {
         //const colorPicker = require('./colorPicked.js');
+        //var async = require('./node_modules/asyncawait/async');
 
         var colorBlue = "#0000FF";
         var colorLightBlue = "#0099ff";
@@ -119,7 +120,8 @@ module.exports = {
                 .setDescription(questionStr.replace(/"/g, ""))
                 .setColor(embedColor)
 
-            message.channel.send(embed).then(sentEmbed => {
+            message.channel.send(embed).then(async function sentEmbed()
+             {
                 var ql = questionSplit.length -1;
                 if (ql <= 10) {
                     if(ql == 1){
@@ -128,76 +130,112 @@ module.exports = {
                     //   //sentEmbed.react("1️⃣");
                      else if(ql == 2) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
+                        try {
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 3) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 4) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 5) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 6) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
-                        sentEmbed.react("6️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        await sentEmbed.react("6️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 7) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
-                        sentEmbed.react("6️⃣");
-                        sentEmbed.react("7️⃣");
+                        try {
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        await sentEmbed.react("6️⃣");
+                        await sentEmbed.react("7️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 8) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
-                        sentEmbed.react("6️⃣");
-                        sentEmbed.react("7️⃣");
-                        sentEmbed.react("8️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        await sentEmbed.react("6️⃣");
+                        await sentEmbed.react("7️⃣");
+                        await sentEmbed.react("8️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 9) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
-                        sentEmbed.react("6️⃣");
-                        sentEmbed.react("7️⃣");
-                        sentEmbed.react("8️⃣");
-                        sentEmbed.react("9️⃣");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        await sentEmbed.react("6️⃣");
+                        await sentEmbed.react("7️⃣");
+                        await sentEmbed.react("8️⃣");
+                        await sentEmbed.react("9️⃣");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     } else if (ql == 10) {
                         console.log("Question -1: " + ql);
-                        sentEmbed.react("1️⃣");
-                        sentEmbed.react("2️⃣");
-                        sentEmbed.react("3️⃣");
-                        sentEmbed.react("4️⃣");
-                        sentEmbed.react("5️⃣");
-                        sentEmbed.react("6️⃣");
-                        sentEmbed.react("7️⃣");
-                        sentEmbed.react("8️⃣");
-                        sentEmbed.react("9️⃣");
-                        sentEmbed.react("🔟");
+                        try{
+                        await sentEmbed.react("1️⃣");
+                        await sentEmbed.react("2️⃣");
+                        await sentEmbed.react("3️⃣");
+                        await sentEmbed.react("4️⃣");
+                        await sentEmbed.react("5️⃣");
+                        await sentEmbed.react("6️⃣");
+                        await sentEmbed.react("7️⃣");
+                        await sentEmbed.react("8️⃣");
+                        await sentEmbed.react("9️⃣");
+                        await sentEmbed.react("🔟");
+                        }catch (error) {
+                            console.error('One of the emojis failed to react.');
+                        }
                     }
 
                 }
