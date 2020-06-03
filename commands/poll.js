@@ -38,7 +38,7 @@ module.exports ={
 
         if (!args.length) {
             //client.commands.get(command).execute(message, args, Discord);
-            return message.reply("No questions detected, Refer to /help");
+            return message.reply("No questions detected, Refer to /poll-help");
         }
 
         var embedColor;

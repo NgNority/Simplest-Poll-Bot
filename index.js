@@ -31,9 +31,9 @@ client.on('message', async message => {
     const command = args.shift().toLowerCase();
   
   
-     if (command === `help`) {
+     if (command === `poll-help`) {
       try {
-        client.commands.get(command).execute(message, args, Discord);
+        client.commands.get("help").execute(message, args, Discord);
       } catch (error) {
         console.error(error);
         message.reply('there was an error trying to execute that command!');
@@ -47,7 +47,7 @@ client.on('message', async message => {
         message.reply('there was an error trying to execute that command!');
       }
       //client.commands.get(command).execute(message, args, Discord);
-  }else if (command === `colorhelp`) {
+  }else if (command === `poll-colors`) {
     try {
       client.commands.get('colorHelp').execute(message, args, Discord);
     } catch (error) {
