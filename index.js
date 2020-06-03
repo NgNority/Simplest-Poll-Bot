@@ -55,6 +55,14 @@ client.on('message', async message => {
       message.reply('there was an error trying to execute that command!');
     }
     //client.commands.get(command).execute(message, args, Discord);
+  }else if (command === `poll-updates`) {
+    try {
+      client.commands.get('pollUpdates').execute(message, args, Discord);
+    } catch (error) {
+      console.error(error);
+      message.reply('there was an error trying to execute that command!');
+    }
+    //client.commands.get(command).execute(message, args, Discord);
   }
   
 
