@@ -7,7 +7,7 @@ var prefix = "/";
 let awsConfig = {
   "region": "ca-central-1",
   "endpoint": "https://dynamodb.ca-central-1.amazonaws.com",
-  "accessKeyId": "[Yeah right like im giving you that]", "secretAccessKey": "[Yeah right like im giving you that]"
+  "accessKeyId": "AKIASTTQQ36VZSCIKEMV", "secretAccessKey": "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"
 };
 AWS.config.update(awsConfig);
 
@@ -36,14 +36,14 @@ client.on('debug', console.log)
 
 client.on('message', async message => {
   let docClient = new AWS.DynamoDB.DocumentClient();
-  let fetchOneByKey = function () {
+  let fetchOneByKey = async function () {
     var params = {
         TableName: "server-ids",
         Key: {
             "ID": message.guild.id
         }
     };
-     docClient.get(params, function (err, data) {
+      docClient.get(params, await function (err, data) {
         if (err) {
             console.log("users::fetchOneByKey::error - " + JSON.stringify(err, null, 2));
             console.log("Prefix Not Set, Reverting to defult");
@@ -66,8 +66,8 @@ client.on('message', async message => {
     })
 }
 
+fetchOneByKey();
 
-await fetchOneByKey();
 
 
   try{
@@ -80,16 +80,18 @@ await fetchOneByKey();
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
   
-  
+    
      if (command === `poll-help`) {
+      
       try {
-        client.commands.get("help").execute(message, args, Discord);
+        client.commands.get("help").execute(message, args, Discord, prefix);
       } catch (error) {
         console.error(error);
         message.reply('there was an error trying to execute that command!');
       }
   
     }else if (command === `poll`) {
+      
       try {
         client.commands.get(command).execute(message, args, Discord);
       } catch (error) {
@@ -98,6 +100,7 @@ await fetchOneByKey();
       }
       //client.commands.get(command).execute(message, args, Discord);
   }else if (command === `poll-colors`) {
+    
     try {
       client.commands.get('colorHelp').execute(message, args, Discord);
     } catch (error) {
@@ -106,6 +109,7 @@ await fetchOneByKey();
     }
     //client.commands.get(command).execute(message, args, Discord);
   }else if (command === `poll-updates`) {
+    
     try {
       client.commands.get('pollUpdates').execute(message, args, Discord);
     } catch (error) {
@@ -114,14 +118,19 @@ await fetchOneByKey();
     }
     //client.commands.get(command).execute(message, args, Discord);
   }else if (command === `poll-prefix`) {
+    
     try {
-      client.commands.get('prefixChange').execute(message, args, Discord);
+      client.commands.get('prefixChange').execute(message, args, Discord, false);
     } catch (error) {
       console.error(error);
       message.reply('there was an error trying to execute that command!');
     }
     //client.commands.get(command).execute(message, args, Discord);
-  }
+  } else if (message.content === `/reset-Poll-Prefix`) {
+    
+    client.commands.get('prefixChange').execute(message, args, Discord, true);
+    //client.commands.get(command).execute(message, args, Discord);
+  } 
   
 
   }

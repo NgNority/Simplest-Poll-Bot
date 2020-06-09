@@ -1,23 +1,30 @@
 module.exports = {
 	name: 'prefixChange',
 	description: 'prefixChange!',
-	execute(message, args, Discord) {
+	execute(message, args, Discord, defultSet) {
         const AWS = require("aws-sdk");
         let awsConfig = {
             "region": "ca-central-1",
             "endpoint": "https://dynamodb.ca-central-1.amazonaws.com",
-            "accessKeyId": "[Yeah right like im giving you that]", "secretAccessKey": "[Yeah right like im giving you that]"
+            "accessKeyId": "AKIASTTQQ36VZSCIKEMV", "secretAccessKey": "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"
         };
         AWS.config.update(awsConfig);
-        var newPrefix = args[0];
+        var newPrefix;
+        if(defultSet == true){
+            newPrefix = "/";
+            console.log("Reseting Prefix");
+        }else{
+            newPrefix = args[0];
+        }
         let docClient = new AWS.DynamoDB.DocumentClient();
-        let fetchOneByKey = function () {
+        let updateWithKey = function () {
             var params = {
                 "TableName": "server-ids",
         Key: { "ID": message.guild.id },
-        UpdateExpression: "set prefix = :prefix",
+        UpdateExpression: "set prefix = :prefix, guildName = :guildName",
         ExpressionAttributeValues: {
-            ":prefix": newPrefix
+            ":prefix": newPrefix,
+            ":guildName": message.guild.name
         },
         ReturnValues: "UPDATED_NEW"
             }
@@ -44,7 +51,7 @@ module.exports = {
         
         })
     };
-    fetchOneByKey();
+    updateWithKey();
 
     
 	},
