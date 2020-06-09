@@ -7,7 +7,7 @@ var prefix = "/";
 let awsConfig = {
   "region": "ca-central-1",
   "endpoint": "https://dynamodb.ca-central-1.amazonaws.com",
-  "accessKeyId": "AKIASTTQQ36VZSCIKEMV", "secretAccessKey": "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"
+  "accessKeyId": "no", "secretAccessKey": "no"
 };
 AWS.config.update(awsConfig);
 
